@@ -4,6 +4,8 @@ body{
   background-attachment: fixed;
   background-size: cover;
   text-align: center;
+
+  font-family: calibri;
 }
 h1{
   font-family: Ravie;
@@ -14,14 +16,6 @@ p{
   margin: 0px;
   font-size: 25px;
 }
-#underbanner{
-  font-size: 20px;
-  font-family: calibri;
-  margin-bottom: 20px;
-  color: #ffa4d8;
-  text-decoration: none;
-}
-
 p2{
   font-size: 20px;
   font-weight: 300;
@@ -31,22 +25,29 @@ p3{
   font-weight: 300;
 }
 
+#underbanner{
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #9f005a;
+}
 #banner{
   display: block;
   margin: 20px auto 0px auto;
   width: 600px;
 }
 
+.cleanLink{
+  text-decoration: none;
+  color: #ffa4d8; /* Specificly meant for the underbanner, not sure I like this. */
+}
 .winrar{
   margin: 0px 20px 10px 20px;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-family: calibri;
 
   background: linear-gradient(rgba(116,0,66,1) 0%, rgba(198,1,113,0.25) 100%);
   border-radius: 10px;
 }
-
 .frame{
   display: inline;
   position: relative;
@@ -59,7 +60,6 @@ p3{
   left: 30px;
   bottom: 60px;
 }
-
 .winrar:hover{
   color: white;
   cursor: pointer;
