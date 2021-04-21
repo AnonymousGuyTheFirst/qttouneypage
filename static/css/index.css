@@ -1,0 +1,66 @@
+body{
+  background-image:  url("../img/bg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+}
+h1{
+  font-family: Ravie;
+  text-align: center;
+  margin: 50px 0px 50px 0px;
+}
+p{
+  margin: 0px;
+  font-size: 25px;
+}
+#underbanner{
+  font-size: 20px;
+  font-family: calibri;
+  margin-bottom: 20px;
+  color: #ffa4d8;
+  text-decoration: none;
+}
+
+p2{
+  font-size: 20px;
+  font-weight: 300;
+}
+p3{
+  font-size: 18px;
+  font-weight: 300;
+}
+
+#banner{
+  display: block;
+  margin: 20px auto 0px auto;
+  width: 600px;
+}
+
+.winrar{
+  margin: 0px 20px 10px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: calibri;
+
+  background: linear-gradient(rgba(116,0,66,1) 0%, rgba(198,1,113,0.25) 100%);
+  border-radius: 10px;
+}
+
+.frame{
+  display: inline;
+  position: relative;
+}
+.frameImg{
+  position: relative;
+}
+.frameChar{
+  position: absolute;
+  left: 30px;
+  bottom: 60px;
+}
+
+.winrar:hover{
+  color: white;
+  cursor: pointer;
+}
