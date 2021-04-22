@@ -7,3 +7,7 @@ def index():
     data = countfile.read()                                 # Save into memory
     countfile.close()                                       # Close that shit
     return render_template("index.html", playercount=data)  # Parse playercount to template
+
+@app.route('/players/')
+def players():
+    return render_template("players.html")
