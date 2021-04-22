@@ -3,10 +3,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    countfile = open("playercount.txt", "r")                # Open file with playercount
-    data = countfile.read()                                 # Save into memory
-    countfile.close()                                       # Close that shit
-    return render_template("index.html", playercount=data)  # Parse playercount to template
+    with open('playercount.txt') as countfile:
+        data = countfile.readlines()[0].strip()
+    return render_template("index.html", playercount=data)
 
 @app.route('/players/')
 def players():
