@@ -33,8 +33,15 @@ def getTourneys():
         
         tourneysArr.append([dataJson[i]['tournament']['name'], tourneyTime, dataJson[i]['tournament']['state'],dataJson[i]['tournament']['full_challonge_url'], []])
 
-        for j in range(0, len(dataJsonParticipants)):
-            tourneysArr[i][4].append([dataJsonParticipants[j]['participant']['name'], dataJsonParticipants[j]['participant']['final_rank']])
+        for j in range(0, len(dataJsonParticipants)): # Apparently some people are too cool for usernames, display names and even regular names
+            if(dataJsonParticipants[j]['participant']['username'] != None):
+                tourneysArr[i][4].append([dataJsonParticipants[j]['participant']['username'], dataJsonParticipants[j]['participant']['final_rank']])
+            elif(dataJsonParticipants[j]['participant']['display_name'] != None):
+                tourneysArr[i][4].append([dataJsonParticipants[j]['participant']['display_name'], dataJsonParticipants[j]['participant']['final_rank']])
+            elif(dataJsonParticipants[j]['participant']['name'] != None):
+                tourneysArr[i][4].append([dataJsonParticipants[j]['participant']['name'], dataJsonParticipants[j]['participant']['final_rank']])
+            else:
+                tourneysArr[i][4].append(['Anonymous', dataJsonParticipants[j]['participant']['final_rank']])
 
     tourneysArr.sort(key=lambda e: e[1]) # Sort array on date
 
