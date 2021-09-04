@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+import tourneys, json
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -10,3 +12,8 @@ def index():
 @app.route('/players/')
 def players():
     return render_template("players.html")
+
+@app.route('/api/tourneys-json')
+def getTournets():
+    #data = json.loads(tourneys.getTourneys())
+    return jsonify(tourneys.getTourneys())
