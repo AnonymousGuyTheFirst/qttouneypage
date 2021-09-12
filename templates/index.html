@@ -2,187 +2,43 @@
 <html lang="en">
 <head>
   <title>QT Sample</title>
+  
 
   <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+  <!-- TODO Fix the styling using bootstrap grid and margins to fix the card layouts-->
   <script src="{{ url_for('static',filename='js/index.js') }}"></script>
 </head>
 <body>
   <img src="{{ url_for('static',filename='img/banner.png') }}" alt="QT wall of Winrars" id="banner">
   <p id="underbanner"><a href="https://www.twitch.tv/qttourney" class="cleanLink">Twitch</a> | <a href="https://www.twitch.tv/qttourney2" class="cleanLink">Twitch 2</a> | <a href="http://leaf.qttourney.com/" class="cleanLink">Leaf ({{playercount}})</a></p>
 
-  <table style="width: 100%">
-    <tr>
-      <td>
-        <div class="winrar" onclick="redirect()"> <!-- should redirect to that specific tourney on challonge -->
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/ari.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px"> <!-- Number for specific QT and who the winner for that QT is in that alt tag if you want to go really in depth, also resized the frame here beacuse it was too big lol-->
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
+  <div class="container-fluid">
+
+    <div class="row">
+    {% for key in tournaments %}
+
+    {% if (loop.index - 1) % 6 == 0 %}
+    </div>
+    <div class="row">
+    {% endif %}
+    <div class="col-md-2 p-2">  
+      <div class="winrar" onclick="redirect('{{ tournaments[key].url }}')"> <!-- should redirect to that specific tourney on challonge -->
+        <div class="frame">
+          <img class="frameChar" src="{{ url_for('static',filename='img/ari.png') }}" alt="" width="100px">
+          <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px"> <!-- Number for specific QT and who the winner for that QT is in that alt tag if you want to go really in depth, also resized the frame here beacuse it was too big lol-->
         </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/ole.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/pap.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/pom.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/tian.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/vel.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/sha.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-    </tr>
-    <tr> <!-- New row -->
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/ari.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/ole.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/pap.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/pom.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/tian.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/vel.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-      <td>
-        <div class="winrar" onclick="redirect()">
-          <div class="frame">
-            <img class="frameChar" src="{{ url_for('static',filename='img/sha.png') }}" alt="" width="100px">
-            <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px">
-          </div>
-          <p>QT No.</p>
-          <p>1st place Name</p>
-          <p2>2nd place Name</p2><br>
-          <p3>3rd place Name</p3><br>
-        </div>
-      </td>
-    </tr>
-  </table>
+        <p>{{ tournaments[key]['name'] }}</p>
+        <br>
+        <p>{{ tournaments[key]['participants'][0][0] }}</p>
+        <p2>{{ tournaments[key]['participants'][1][0] }}</p2>
+        <p3>{{ tournaments[key]['participants'][2][0] }}</p3>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+  <!-- /.container-fluid -->
 </body>
 </html>

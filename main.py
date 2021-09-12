@@ -7,7 +7,15 @@ app = Flask(__name__)
 def index():
     with open('playercount.txt') as countfile:
         data = countfile.readlines()[0].strip()
-    return render_template("index.html", playercount=data)
+    
+    # Try pulling tourney information from challonge, if not then fallback on the tourney listing saved onto machine
+    #try:
+    #   tournaments = json.loads(tourneys.getTourneys())
+    #except:
+    
+    tournaments = json.load(open('./tourneys.txt'))
+
+    return render_template("index.html", playercount=data, tournaments=tournaments, len=len(tournaments["0"]))
 
 @app.route('/players/')
 def players():

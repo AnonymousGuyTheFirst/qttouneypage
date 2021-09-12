@@ -53,11 +53,16 @@ def getTourneys():
         except:
             pass
 
-        tourneysDict[i] = {
-            "Name" : tourneysArr[i][0], 
-            "Created At" : tourneysArr[i][1].strftime("%Y-%m-%d"),
-            "State" : tourneysArr[i][2],
-            "url" : tourneysArr[i][3],
-            "participants" : tourneysArr[i][4]}
+        if(len(tourneysArr[i][4]) > 4):
+            tourneysDict[i] = {
+                "name" : tourneysArr[i][0], 
+                "created At" : tourneysArr[i][1].strftime("%Y-%m-%d"),
+                "state" : tourneysArr[i][2],
+                "url" : tourneysArr[i][3],
+                "participants" : tourneysArr[i][4]}
 
-    return tourneysDict
+    # Update local tourney listings
+    with open('./tourneys.txt', 'w') as json_file:
+        json.dump(tourneysDict, json_file, indent=4)
+
+    return json.dumps(tourneysDict)
