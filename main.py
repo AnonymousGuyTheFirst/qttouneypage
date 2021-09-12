@@ -9,11 +9,10 @@ def index():
         data = countfile.readlines()[0].strip()
     
     # Try pulling tourney information from challonge, if not then fallback on the tourney listing saved onto machine
-    #try:
-    #   tournaments = json.loads(tourneys.getTourneys())
-    #except:
-    
-    tournaments = json.load(open('./tourneys.txt'))
+    try:
+       tournaments = json.loads(tourneys.getTourneys())
+    except:
+        tournaments = json.load(open('./tourneys.txt'))
 
     return render_template("index.html", playercount=data, tournaments=tournaments, len=len(tournaments["0"]))
 
