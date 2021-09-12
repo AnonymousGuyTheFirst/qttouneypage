@@ -41,12 +41,16 @@ p3{
   color: #ffa4d8; /* Specificly meant for the underbanner, not sure I like this. */
 }
 .winrar{
-  margin: 0px 20px 10px 20px;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  
   padding-top: 20px;
   padding-bottom: 20px;
 
   background: linear-gradient(rgba(116,0,66,1) 0%, rgba(198,1,113,0.25) 100%);
   border-radius: 10px;
+
 }
 .frame{
   display: inline;
@@ -57,7 +61,7 @@ p3{
 }
 .frameChar{
   position: absolute;
-  left: 30px;
+  right: 100px;
   bottom: 60px;
 }
 .winrar:hover{
