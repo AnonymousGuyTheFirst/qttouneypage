@@ -1,12 +1,13 @@
 import requests, json, datetime
+from os import environ
 
 url = "https://qttourney.challonge.com/tournaments"
 
 # TODO Maybe implement a check that looks for an 'ignoretourneys' json file to take out any tourneys being listed... Or could just remove them manually from tourneys.json
 
-# Only doing this because I've got collaberator access to the QT. Feel free to replace these with your information if you'd like
-apiKey = "YFY3aSkSfKcqs8GdwuMueTB1fSQDZk384ZodySki"
-uname = "The_Beverage"
+# Set API access details in your machines enviroment variables
+apiKey = environ.get('API_KEY')
+uname = environ.get('API_UNAME')
 localTourneys = {} # Used to hold the current listings stored in the machine. used for inserting the new tourneys if there are any
 
 def getTourneys():
