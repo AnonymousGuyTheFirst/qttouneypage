@@ -98,6 +98,9 @@ def getTourneys():
         with open('./tourneys.json', 'w') as json_file:
             json.dump(tourneysDict, json_file, indent=4)
     else:
-        tourneysDict = localTourneys
+        with open('./tourneys.json', 'r') as tourneys:
+            data = json.load(tourneys)
+            for tourney in data:
+                tourneysDict[tourney] = data[tourney]
 
     return json.dumps(tourneysDict)
