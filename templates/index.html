@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>QT Sample</title>
-  
+
 
   <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-grid.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-grid.css.map') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
-  <!-- TODO Fix the styling using bootstrap grid and margins to fix the card layouts-->
   <script src="{{ url_for('static',filename='js/index.js') }}"></script>
 </head>
+
 <body>
   <img src="{{ url_for('static',filename='img/banner.png') }}" alt="QT wall of Winrars" id="banner">
-  <p id="underbanner"><a href="https://www.twitch.tv/qttourney" class="cleanLink">Twitch</a> | <a href="https://www.twitch.tv/qttourney2" class="cleanLink">Twitch 2</a> | <a href="http://leaf.qttourney.com/" class="cleanLink">Leaf ({{playercount}})</a></p>
+  <p id="underbanner"><a href="https://www.twitch.tv/qttourney" class="cleanLink">Twitch</a> | <a
+      href="https://www.twitch.tv/qttourney2" class="cleanLink">Twitch 2</a> | <a href="http://leaf.qttourney.com/"
+      class="cleanLink">Leaf ({{playercount}})</a>
+  </p>
 
   <div class="container-fluid">
 
@@ -21,24 +26,41 @@
 
     {% if (loop.index - 1) % 6 == 0 %}
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
     {% endif %}
-    <div class="col-md-2 p-2">  
-      <div class="winrar" onclick="redirect('{{ tournaments[key].url }}')"> <!-- should redirect to that specific tourney on challonge -->
-        <div class="frame">
-          <img class="frameChar" src="{{ url_for('static',filename='img/ari.png') }}" alt="" width="100px">
-          <img class="frameImg" src="{{ url_for('static',filename='img/frameClear.png') }}" alt="QT # Winner" width="150px"> <!-- Number for specific QT and who the winner for that QT is in that alt tag if you want to go really in depth, also resized the frame here beacuse it was too big lol-->
+      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 p-2">
+        <div class="winrar p-2 pb-4" onclick="redirect('{{ tournaments[key].url }}')">
+          <!-- should redirect to that specific tourney on challonge -->
+          <div class="frame">
+            <img class="frameImg {{ tournaments[key]['participants'][0][0] | QTMain }}" alt="QT # Winner"
+              width="150px">
+            <!-- Number for specific QT and who the winner for that QT is in that alt tag if you want to go really in depth, also resized the frame here beacuse it was too big lol-->
+            <p>{{ tournaments[key]['name'] | QTFormat | safe }}</p>
+          </div>
+          <div>
+            <br>
+            {% if tournaments[key]['participants']|length >= 3 %}
+            <p>{{ tournaments[key]['participants'][0][0] }}</p>
+            <p2>{{ tournaments[key]['participants'][1][0] }}</p2>
+            <p3>{{ tournaments[key]['participants'][2][0] }}</p3>
+            {% endif %}
+          </div>
+          <!-- Div for flexbox to justify group of elements to the bottom of the winrar card -->
         </div>
-        <p>{{ tournaments[key]['name'] }}</p>
-        <br>
-        <p>{{ tournaments[key]['participants'][0][0] }}</p>
-        <p2>{{ tournaments[key]['participants'][1][0] }}</p2>
-        <p3>{{ tournaments[key]['participants'][2][0] }}</p3>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+      <!-- Used to ready reasources from the web server so we can access them on the stylesheet because apparently nobody ever thought that maybe someone out there would like to access file locations in a stylesheet -->
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/anonFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/ariFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/oleFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/shaFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/velFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/pomFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/papFrame.png') }}" alt="">
+      <img style="visibility: hidden;" src="{{ url_for('static',filename='img/tianFrame.png') }}" alt="">
     </div>
-  </div>
   <!-- /.container-fluid -->
 </body>
+
 </html>
