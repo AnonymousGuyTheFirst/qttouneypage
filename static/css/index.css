@@ -12,6 +12,9 @@ h1{
   text-align: center;
   margin: 50px 0px 50px 0px;
 }
+p, p2, p3{
+  display: block;
+}
 p{
   margin: 0px;
   font-size: 25px;
@@ -43,6 +46,7 @@ p3{
 .winrar{
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
   height: 100%;
   
   padding-top: 20px;
@@ -50,21 +54,48 @@ p3{
 
   background: linear-gradient(rgba(116,0,66,1) 0%, rgba(198,1,113,0.25) 100%);
   border-radius: 10px;
-
+  border: 1px solid rgba(211, 211, 211, 0.2);
 }
 .frame{
   display: inline;
   position: relative;
 }
-.frameImg{
-  position: relative;
-}
-.frameChar{
-  position: absolute;
-  right: 100px;
-  bottom: 60px;
-}
 .winrar:hover{
   color: white;
   cursor: pointer;
+}
+
+/* Characters */
+.rand{
+  content: url(../img/anonFrame.png);
+  bottom: 30px;
+}
+
+.pom{
+  content: url(../img/pomFrame.png);
+}
+
+.ole{
+  content: url(../img/oleFrame.png);
+}
+
+.pap{
+  content: url(../img/papFrame.png);
+}
+
+.tian{
+  content: url(../img/tianFrame.png);
+  right: 100px;
+}
+
+.vel{
+  content: url(../img/velFrame.png);
+}
+
+.ari{
+  content: url(../img/ariFrame.png);
+}
+
+.sha{
+  content: url(../img/shaFrame.png);
 }
