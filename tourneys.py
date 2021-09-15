@@ -88,7 +88,6 @@ def getTourneys():
             "url" : tourneysArr[i][3],
             "participants" : tourneysArr[i][4]}
 
-    print(len(tourneysArr))
     if(len(tourneysArr) > 0): # If there are tourneys that need to be updated to the local file
         for tourney in localTourneys: # For every tourney stored locally
             tempTourney = localTourneys[tourney] # temporarily store a single tourney
