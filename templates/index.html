@@ -29,20 +29,21 @@
     <div class="row justify-content-center">
     {% endif %}
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 p-2">
-        <div class="winrar p-2 pb-4" onclick="redirect('{{ tournaments[key].url }}')">
+        <div class="winrar {{ tournaments[key]['state'] }} p-2 pb-4" onclick="redirect('{{ tournaments[key].url }}')">
           <!-- should redirect to that specific tourney on challonge -->
           <div class="frame">
-            <img class="frameImg {{ tournaments[key]['participants'][0][0] | QTMain }}" alt="QT # Winner"
-              width="150px">
+            <img class="frameImg {{ tournaments[key]['participants'][0][0] | QTMain }}" alt="QT # Winner" width="150px">
             <!-- Number for specific QT and who the winner for that QT is in that alt tag if you want to go really in depth, also resized the frame here beacuse it was too big lol-->
             <p>{{ tournaments[key]['name'] | QTFormat | safe }}</p>
           </div>
           <div>
             <br>
-            {% if tournaments[key]['participants']|length >= 3 %}
+            {% if tournaments[key]['participants']|length >= 3 and tournaments[key]['state'] != 'pending' %}
             <p>{{ tournaments[key]['participants'][0][0] }}</p>
             <p2>{{ tournaments[key]['participants'][1][0] }}</p2>
             <p3>{{ tournaments[key]['participants'][2][0] }}</p3>
+            {% else %}
+            <p>{{ tournaments[key]['state'] | title }}</p>
             {% endif %}
           </div>
           <!-- Div for flexbox to justify group of elements to the bottom of the winrar card -->

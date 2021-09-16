@@ -65,6 +65,11 @@ p3{
   cursor: pointer;
 }
 
+/* Tourney states */
+.pending{
+  filter: grayscale();
+}
+
 /* Characters */
 .rand{
   content: url(../img/anonFrame.png);
